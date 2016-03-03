@@ -114,4 +114,16 @@ for module in $MODULES; do
   cd /root/spark-ec2  # guard against setup.sh changing the cwd
 done
 
+
+######################## ZK-SPARK ########################
+# Add zk-spark stuff.
+
+curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+sudo yum install -y sbt
+
+sudo yum install -y tmux
+
+# git clone https://mirikle@github.com/wzheng/crypto_computation.git
+######################## ZK-SPARK ########################
+
 popd > /dev/null

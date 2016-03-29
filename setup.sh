@@ -123,6 +123,8 @@ sudo yum install -y sbt
 
 sudo yum install -y tmux
 
+# Create the directory to output event logs.
+mkdir /tmp/spark-events
 # git clone https://mirikle@github.com/wzheng/crypto_computation.git
 ######################## ZK-SPARK ########################
 

@@ -51,7 +51,7 @@ else:
     raw_input = input
     xrange = range
 
-SPARK_EC2_VERSION = "1.6.0"
+SPARK_EC2_VERSION = "1.6.2"
 SPARK_EC2_DIR = os.path.dirname(os.path.realpath(__file__))
 
 VALID_SPARK_VERSIONS = set([
@@ -76,6 +76,8 @@ VALID_SPARK_VERSIONS = set([
     "1.5.1",
     "1.5.2",
     "1.6.0",
+    "1.6.1",
+    "1.6.2",
 ])
 
 SPARK_TACHYON_MAP = {
@@ -94,14 +96,21 @@ SPARK_TACHYON_MAP = {
     "1.5.1": "0.7.1",
     "1.5.2": "0.7.1",
     "1.6.0": "0.8.2",
+    "1.6.1": "0.8.2",
+    "1.6.2": "0.8.2",
 }
 
 DEFAULT_SPARK_VERSION = SPARK_EC2_VERSION
 DEFAULT_SPARK_GITHUB_REPO = "https://github.com/apache/spark"
 
 # Default location to get the spark-ec2 scripts (and ami-list) from
+# <<<<<<< HEAD
 DEFAULT_SPARK_EC2_GITHUB_REPO = "https://github.com/mirikle/spark-ec2"
 DEFAULT_SPARK_EC2_BRANCH = "branch-1.5"
+# =======
+# DEFAULT_SPARK_EC2_GITHUB_REPO = "https://github.com/amplab/spark-ec2"
+# DEFAULT_SPARK_EC2_BRANCH = "branch-1.6"
+# >>>>>>> dcdc566b9e243a5be1362e8944f0ec16db3a7ea9
 
 
 def setup_external_libs(libs):
@@ -192,7 +201,7 @@ def parse_args():
         help="If you have multiple profiles (AWS or boto config), you can configure " +
              "additional, named profiles by using this option (default: %default)")
     parser.add_option(
-        "-t", "--instance-type", default="m1.large",
+        "-t", "--instance-type", default="m3.large",
         help="Type of instance to launch (default: %default). " +
              "WARNING: must be 64-bit; small instances won't work")
     parser.add_option(
@@ -390,11 +399,11 @@ def get_validate_spark_version(version, repo):
 EC2_INSTANCE_TYPES = {
     "c1.medium":   "pvm",
     "c1.xlarge":   "pvm",
-    "c3.large":    "pvm",
-    "c3.xlarge":   "pvm",
-    "c3.2xlarge":  "pvm",
-    "c3.4xlarge":  "pvm",
-    "c3.8xlarge":  "pvm",
+    "c3.large":    "hvm",
+    "c3.xlarge":   "hvm",
+    "c3.2xlarge":  "hvm",
+    "c3.4xlarge":  "hvm",
+    "c3.8xlarge":  "hvm",
     "c4.large":    "hvm",
     "c4.xlarge":   "hvm",
     "c4.2xlarge":  "hvm",
